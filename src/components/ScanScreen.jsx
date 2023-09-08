@@ -5,7 +5,7 @@ export default function ScanScreen() {
   return (
     <>
       <div className="flex flex-col w-full justify-start">
-        <div className="flex flex-row w-full ms-5 justify-start mt-5 gap-3">
+        <div className="flex flex-row w-full px-5 justify-start mt-5 gap-3">
           <img src="https://placehold.co/400" alt="none" className='rounded-full  h-16 border-2' />
           <p className='mt-5'>Hello Sudeepa</p>
         </div>
