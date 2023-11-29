@@ -1,3 +1,4 @@
+"dynamic import"
 import React, { useState } from 'react'
 import { QrReader } from 'react-qr-reader'
 import Swal from 'sweetalert2';
@@ -23,13 +24,13 @@ export default function QrScanner() {
                     facingMode: 'environment'
                 }}
                 onResult={(result, error) => {
-                    if (!!result) {
+                    if (result) {
+                        // alert(result)
                         SuccessFunc()
                     }
-
-                    if (!!error) {
-                        console.info(error);
-                    }
+                    // if (error) {
+                    //     console.info(error);
+                    // }
                 }}
             />
         </div>

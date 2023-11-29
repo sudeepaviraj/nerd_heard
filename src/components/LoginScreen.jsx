@@ -8,7 +8,7 @@ export default function LoginScreen() {
     password:null
   }})
   const SendReq = () =>{
-    axios.post("http://localhost:5000/login")
+    axios.post("http://localhost:5000/login",LoginData.values)
     console.log(LoginData.values);
   }
   return ( 

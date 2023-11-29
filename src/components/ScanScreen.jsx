@@ -33,7 +33,7 @@ export default function ScanScreen() {
           <QrScanner />
         </div>
 
-        <button className='w-4/5 h-12 bg-red-600 border rounded-full mx-auto mt-10 font-bold text-white text-2xl'>Scan Failed !</button>
+        <button className='w-4/5 h-12 bg-lime-400 border rounded-full mx-auto mt-10 font-bold text-white text-2xl'>Waiting For Scan...</button>
       </div>
     </>
   )
