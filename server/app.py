@@ -5,7 +5,7 @@ CORS(app)
 import json
 from decouple import config
 from Classes import Key
-
+from Classes import User
 Farnet = Key.Key()
 
 @app.route('/',methods=["POST","GET"])
@@ -16,7 +16,9 @@ def hello_world():
 @app.post("/login")
 def login():
     formdata = json.loads(request.get_data())
-    return Farnet.Encrypt("fhgfg")
+    user = User.User()
+    login = user.Login(formdata["reg_no"],formdata["index_no"])
+    return login
 
 if __name__ == '__main__':
     app.run()

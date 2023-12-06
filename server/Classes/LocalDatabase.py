@@ -1,10 +1,10 @@
 import sqlite3
 class Connection:
-    connection = sqlite3.connect("users.db")
+    connection = sqlite3.connect("users.db",check_same_thread=False)
     curser = connection.cursor()
     def __init__(self) -> None:
         pass
-    
+        
     def Insert(self,sql:str)->bool:
         self.curser.execute(sql)
         try:
@@ -19,3 +19,4 @@ class Connection:
             return res.fetchall()
         except Exception as e:
             return e
+    

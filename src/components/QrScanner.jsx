@@ -25,8 +25,8 @@ export default function QrScanner() {
                 }}
                 onResult={(result, error) => {
                     if (result) {
-                        // alert(result)
-                        SuccessFunc()
+                        alert(result)
+                        // SuccessFunc()
                     }
                     // if (error) {
                     //     console.info(error);

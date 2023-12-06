@@ -4,8 +4,8 @@ import React from 'react'
 
 export default function LoginScreen() {
   const LoginData = useFormik({initialValues:{
-    username:null,
-    password:null
+    index_no:null,
+    reg_no:null
   }})
   const SendReq = () =>{
     axios.post("http://localhost:5000/login",LoginData.values)
@@ -19,9 +19,9 @@ export default function LoginScreen() {
       </div>
       <div className="flex flex-col w-full  justify-center gap-6">
         <p className='ml-9 font-semibold'>Student Index</p>
-        <input onChange={LoginData.handleChange} type="text" name="username"  className='rounded-lg w-4/5 mx-auto h-16 border-2' />
-        <p className='ml-9 font-semibold'>Password</p>
-        <input onChange={LoginData.handleChange} type="password" name="password"  className='rounded-lg w-4/5 mx-auto h-16 border-2' />
+        <input onChange={LoginData.handleChange} type="text" name="index_no"  className='rounded-lg w-4/5 mx-auto h-16 border-2' />
+        <p className='ml-9 font-semibold'>Registration Number</p>
+        <input onChange={LoginData.handleChange} type="text" name="reg_no"  className='rounded-lg w-4/5 mx-auto h-16 border-2' />
         <button className='w-4/5 h-12 bg-yellow-300 border rounded-full mx-auto font-mono text-lg mt-6' onClick={()=>SendReq()}>Login</button>
 
       </div>
