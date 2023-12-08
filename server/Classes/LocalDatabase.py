@@ -11,7 +11,7 @@ class Connection:
             self.connection.commit()
             return True
         except Exception as e:
-            return False   
+            return e   
     
     def Fetch(self,sql:str):
         res = self.curser.execute(sql)

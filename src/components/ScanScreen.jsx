@@ -1,15 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import QrScanner from './QrScanner'
+import * as jose from 'jose'
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function ScanScreen() {
+
+  const navigate = useNavigate()
+
+  const [User, setUser] = useState({})
+
+  useEffect(() => {
+    try{
+      jose.decodeJwt(sessionStorage.getItem("auth"))
+      let user = jose.decodeJwt(sessionStorage.getItem("auth"))
+      console.log(jose.decodeJwt(sessionStorage.getItem("auth")));
+      setUser(user)
+    }
+    catch{
+      navigate("/")
+    }
+  }, [])
+
+  const LogOut = () =>{
+    Swal.fire({
+      title:"Are You Sure ?",
+      text:" You Are Gonna Log OUt",
+      icon:"warning",
+      showConfirmButton:true,
+      showCancelButton:true,
+      confirmButtonText:"Confirm"
+    }).then((res)=>{
+      console.log(res);
+      if(res.isConfirmed){
+        sessionStorage.removeItem("auth")
+        navigate("/")
+      }
+    })
+  }
+
   return (
     <>
       <div className="flex flex-col w-full justify-start">
-        <div className="flex flex-row w-full px-5 justify-start mt-5 gap-3">
-          <img src="https://placehold.co/400" alt="none" className='rounded-full  h-16 border-2' />
-          <p className='mt-5'>Hello Sudeepa</p>
+        <div className="flex justify-between items-center mt-5">
+          <div className="flex flex-row w-full items-center px-5 justify-start gap-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/1154/1154987.png" alt="none" className='rounded-full  h-16 border-2' />
+            <p className=' font-semibold'>{User.name}<br />{User.index}</p>
+          </div>
+        <i onClick={()=>LogOut()} class="fa-solid fa-power-off pe-5 fa-2x"/>
         </div>
-
         <div className="flex flex-row w-full justify-center gap-4 px-4 mt-10">
           <div className="h-36 flex-col flex justify-center items-center border rounded-3xl w-1/2 shadow-lg">
             <p className='text-xl font-semibold font-sans'>
@@ -17,7 +58,7 @@ export default function ScanScreen() {
             </p>
             <p className='text-center'>
               ITC1032 Software Engineering
-              </p>
+            </p>
           </div>
           <div className="h-36 flex justify-center flex-col items-center border rounded-3xl w-1/2 shadow-lg">
             <p className='text-xl font-semibold font-sans'>
@@ -25,7 +66,7 @@ export default function ScanScreen() {
             </p>
             <p className='text-center'>
               ITC1032 Software Engineering
-              </p>
+            </p>
           </div>
         </div>
 
