@@ -10,7 +10,7 @@ read -p "Enter your GitHub repository URL: " github_repo_url
 read -p "Enter your domain for Nginx configuration (e.g., uni.darkevil.buzz): " domain
 
 # Clone GitHub repository using the provided PAT
-git clone "$github_repo_url" /path/to/your/app
+git clone "$github_pat@$github_repo_url"
 
 # Update package list
 sudo apt update

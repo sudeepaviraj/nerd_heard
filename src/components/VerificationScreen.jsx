@@ -16,6 +16,10 @@ export default function VerificationScreen() {
 
     const lecture = location.state
 
+    const Home = () =>{
+        navigate("/home")
+    }
+
     function onSubmit(token) {
         Swal.fire({
             title:"Please Wait...",
@@ -69,10 +73,13 @@ export default function VerificationScreen() {
 
     }, [])
 
-
     return (
         <>
             <div className='flex flex-col items-center '>
+
+                <div className='text-start w-full p-2'>
+                <i class="fa-solid fa-house fa-2x " onClick={()=>Home()}></i>
+                </div>
 
                 <p className="text-center my-5 text-xl font-bold font-mono">
                     Attendance Confirmation

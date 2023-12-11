@@ -9,7 +9,7 @@ class Connection:
         self.curser.execute(sql)
         try:
             self.connection.commit()
-            return True
+            return "Success",200
         except Exception as e:
             return e   
     

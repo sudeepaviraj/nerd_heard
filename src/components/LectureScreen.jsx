@@ -5,7 +5,7 @@ export default function LectureScreen() {
     <>
       <div className="flex flex-col w-full justify-start">
         <div className="flex flex-row w-full px-5 justify-start mt-5 gap-3">
-          <img src="https://placehold.co/400" alt="none" className='rounded-full  h-16 border-2' />
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj4CAuJE8PPM10BRXPagR9wj98JmV-m1ViASVGQNBQXiv54nL4OZR7_MYZcZHeftz3M1k&usqp=CAU" alt="none" className='rounded-full  h-16 border-2' />
           <p className='mt-5'>Hello Sudeepa</p>
         </div>
 
