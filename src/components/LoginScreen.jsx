@@ -1,13 +1,26 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
+import * as jose from 'jose'
 
 export default function LoginScreen() {
 
+
+
   const navigate = useNavigate();
-  
+
+  useEffect(() => {
+    try {
+      jose.decodeJwt(sessionStorage.getItem("auth"))
+      navigate("/home")
+    }
+    catch (e) {
+      console.log("");
+    }
+  }, [])
+
   const LoginData = useFormik({
     initialValues: {
       index_no: null,
@@ -27,13 +40,19 @@ export default function LoginScreen() {
         allowEscapeKey: false
       })
       axios.post("http://localhost:5000/login", LoginData.values).then((res) => {
+        console.log(res.status);
         if (res.status == 200) {
           Swal.close()
           navigate("/home")
-          sessionStorage.setItem("auth",res.data.secret)
+          sessionStorage.setItem("auth", res.data.secret)
         }
-        if (res.status == 403) {
-
+      }).catch((err)=>{
+        if(err){
+          Swal.fire({
+            title:"Login Failed!",
+            text:"Please Check The Login Details...",
+            imageUrl:"/images/forbidden.svg"
+          })
         }
       })
     }

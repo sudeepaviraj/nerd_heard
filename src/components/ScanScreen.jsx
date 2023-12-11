@@ -46,7 +46,10 @@ export default function ScanScreen() {
       <div className="flex flex-col w-full justify-start">
         <div className="flex justify-between items-center mt-5">
           <div className="flex flex-row w-full items-center px-5 justify-start gap-3">
+            <div>
             <img src="https://cdn-icons-png.flaticon.com/512/1154/1154987.png" alt="none" className='rounded-full  h-16 border-2' />
+            {/* <div className='bg-green-500 w-3 h-3 rounded-full fixed top-16 left-16'></div> */}
+            </div>
             <p className=' font-semibold'>{User.name}<br />{User.index}</p>
           </div>
         <i onClick={()=>LogOut()} class="fa-solid fa-power-off pe-5 fa-2x"/>
