@@ -12,7 +12,7 @@ conn = LocalDatabase.Connection()
 
 @app.post("/login")
 def login():
-    print(request.get_json)
+    print(request.get_json())
     formdata = request.get_json()
     user = User.User()
     login = user.Login(formdata["reg_no"], formdata["index_no"])
@@ -21,7 +21,7 @@ def login():
 
 @app.post("/verifyCapcha")
 def capcha():
-    print(request.get_json)
+    print(request.get_json())
     token = request.get_json()
     stat = requests.post(f"https://www.google.com/recaptcha/api/siteverify?secret=6LfUMSspAAAAAJjXr7qcr89CzyahjMFLNRrkuB08&response={token['token']}").content
     return stat
@@ -29,7 +29,7 @@ def capcha():
 
 @app.post("/lecture")
 def lecture():
-    print(request.get_json)
+    print(request.get_json())
     data = request.get_json()
     print(data)
     try:
@@ -43,7 +43,7 @@ def lecture():
         return e
 @app.post("/markAttendance")
 def attendance():
-    print(request.get_json)
+    print(request.get_json())
     data = request.get_json()
     status = conn.Insert(f"INSERT INTO student_attendance(idlecture,iduser,timestamp) VALUES ({data['lec']},{data['usr']},'{datetime.datetime.now()}')")
     return status
